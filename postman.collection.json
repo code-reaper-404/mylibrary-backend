@@ -1,0 +1,97 @@
+{
+  "info": {
+    "name": "MyLibrary API",
+    "_postman_id": "12345678-abcd-efgh-ijkl-987654321",
+    "description": "API collection for MyLibrary (Bookshelf, Wishlist, Notes, History, Auth)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Signup",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": { "raw": "http://localhost:5000/api/auth/signup", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api","auth","signup"] }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": { "raw": "http://localhost:5000/api/auth/login", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api","auth","login"] }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "http://localhost:5000/api/auth/logout", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api","auth","logout"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Library",
+      "item": [
+        {
+          "name": "Add to Bookshelf",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"1984\",\n  \"author\": \"George Orwell\",\n  \"genre\": \"Dystopian\"\n}"
+            },
+            "url": { "raw": "http://localhost:5000/api/library/bookshelf", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api","library","bookshelf"] }
+          }
+        },
+        {
+          "name": "Get Bookshelf",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "http://localhost:5000/api/library/bookshelf", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api","library","bookshelf"] }
+          }
+        },
+        {
+          "name": "Add to Wishlist",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"The Great Gatsby\",\n  \"author\": \"F. Scott Fitzgerald\",\n  \"genre\": \"Classic\"\n}"
+            },
+            "url": { "raw": "http://localhost:5000/api/library/wishlist", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api","library","wishlist"] }
+          }
+        },
+        {
+          "name": "Get Wishlist",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "http://localhost:5000/api/library/wishlist", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api","library","wishlist"] }
+          }
+        }
+      ]
+    }
+  ]
+}
