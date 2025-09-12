@@ -9,8 +9,8 @@ const generateToken = (res, userId) => {
 
   res.cookie("token", token, {
     httpOnly: true,
-    secure: true, // true in production (HTTPS)
-    sameSite: "none",
+    secure: false, // true in production (HTTPS)
+    sameSite: "strict",
     maxAge: 24 * 60 * 60 * 1000,
   });
 };
@@ -38,7 +38,7 @@ const login = async (req, res) => {
     const user = await User.findOne({ email });
     if (user && (await user.matchPassword(password))) {
       generateToken(res, user._id);
-      res.json({ message: "Login successful", user });
+      res.status(200).json({ status: 200, message: "Login successful", user });
     } else {
       res.status(401).json({ message: "Invalid credentials" });
     }
@@ -61,7 +61,7 @@ const checkAuth = (req, res) => {
 
     // If full user was fetched by middleware
     if (req.user) {
-      return res.json({ isAuthenticated: true, user: req.user });
+      return res.status(200).json({ isAuthenticated: true, user: req.user });
     }
 
     // If only userId is available
@@ -71,4 +71,4 @@ const checkAuth = (req, res) => {
   }
 };
 
-module.exports = { signup, login, logout ,checkAuth};
+module.exports = { signup, login, logout, checkAuth };

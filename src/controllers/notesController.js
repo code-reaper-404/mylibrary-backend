@@ -12,7 +12,8 @@ const addNote = async (req, res) => {
 const getNotes = async (req, res) => {
     try {
         const notes = await Note.find({ user: req.userId });
-        res.json(notes);
+
+        res.status(201).json(notes);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -38,7 +39,7 @@ const deleteNote = async (req, res) => {
             user: userId,
         });
 
-        res.json({ message: "note deleted", note });
+        res.status(201).json({ message: "note deleted", note });
     } catch (error) {
         res.status(500).json({ message: "Error deleting Note", error });
     }

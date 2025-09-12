@@ -29,7 +29,8 @@ const getAllHistory = async (req, res) => {
             .populate("user", "name email")
             .sort({ createdAt: -1 });
 
-        res.json(history);
+        res.status(201).json(history);
+
     } catch (error) {
         res.status(500).json({ message: "Error fetching history", error });
     }
@@ -43,7 +44,7 @@ const getUserHistory = async (req, res) => {
             .populate("book", "title author")
             .sort({ createdAt: -1 });
 
-        res.json(history);
+        res.status(201).json(history);
     } catch (error) {
         res.status(500).json({ message: "Error fetching user history", error });
     }
