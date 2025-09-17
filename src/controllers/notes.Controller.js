@@ -21,8 +21,8 @@ const getNotes = async (req, res) => {
 
 const getNoteById = async (req, res) => {
     try {
-        const { noteId } = req.params;
-        const note = await Note.findOne({ _id: noteId, user: req.userId, isDeleted: { $ne: true } });
+        const { id } = req.params;
+        const note = await Note.findOne({ _id: id, user: req.userId, isDeleted: { $ne: true } });
 
         if (!note) return res.status(404).json({ message: "Note not found" });
 
@@ -34,10 +34,10 @@ const getNoteById = async (req, res) => {
 
 const updateNote = async (req, res) => {
     try {
-        const { noteId } = req.params;
+        const { id } = req.params;
 
         const note = await Note.findOneAndUpdate(
-            { _id: noteId, user: req.userId, isDeleted: { $ne: true } },
+            { _id: id, user: req.userId, isDeleted: { $ne: true } },
             req.body,
             { new: true, runValidators: true }
         );
