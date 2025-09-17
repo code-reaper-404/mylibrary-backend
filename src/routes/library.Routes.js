@@ -1,7 +1,7 @@
 const express = require("express");
 const { addBook, getBooks, updateBookStatus, deleteBook, getWishlist, editBook, getDashboardCounts, getBookById } = require("../controllers/bookshelf.Controller");
 const { addGenre, getGenre, updateGenre, deleteGenre, getGenreById } = require("../controllers/genre.Controller");
-const { addNote, getNotes, deleteNote } = require("../controllers/notes.Controller");
+const { addNote, getNotes, deleteNote, getNoteById, updateNote } = require("../controllers/notes.Controller");
 const { protect } = require("../middleware/auth.Middleware");
 
 const router = express.Router();
@@ -25,6 +25,8 @@ router.delete("/delete-genre/:id", protect, deleteGenre);
 
 router.post("/add-note", protect, addNote);
 router.get("/get-note", protect, getNotes);
-router.get("/delete-note/:id", protect, deleteNote);
+router.get("/get-note/:id", protect,getNoteById);
+router.put("/edit-note/:id", protect, updateNote);
+router.delete("/delete-note/:id", protect, deleteNote);
 
 module.exports = router;
