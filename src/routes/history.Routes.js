@@ -2,7 +2,7 @@ const express = require("express");
 const {
   getAllHistory,
   getUserHistory,
-} = require("../controllers/historyController");
+} = require("../controllers/history.Controller");
 
 const router = express.Router();
 const { protect } = require("../middleware/auth.Middleware");

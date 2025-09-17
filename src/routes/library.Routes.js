@@ -1,7 +1,7 @@
 const express = require("express");
-const { addBook, getBooks, updateBookStatus, deleteBook, getWishlist, editBook, getDashboardCounts, getBookById } = require("../controllers/bookshelfController");
-const { addGenre, getGenre, updateGenre, deleteGenre, getGenreById } = require("../controllers/genreController");
-const { addNote, getNotes, deleteNote } = require("../controllers/notesController");
+const { addBook, getBooks, updateBookStatus, deleteBook, getWishlist, editBook, getDashboardCounts, getBookById } = require("../controllers/bookshelf.Controller");
+const { addGenre, getGenre, updateGenre, deleteGenre, getGenreById } = require("../controllers/genre.Controller");
+const { addNote, getNotes, deleteNote } = require("../controllers/notes.Controller");
 const { protect } = require("../middleware/auth.Middleware");
 
 const router = express.Router();
