@@ -7,11 +7,14 @@ const generateToken = (res, userId) => {
     expiresIn: process.env.JWT_EXPIRES,
   });
 
-  res.cookie("token", token, {
-    httpOnly: true,
-    sameSite: "lax",
-    maxAge: 24 * 60 * 60 * 1000,
-  });
+res.cookie("token", token, {
+  httpOnly: true,
+  secure: true,        // must be true for SameSite=None
+  sameSite: "None",    // allows cross-site cookie usage
+  maxAge: 24 * 60 * 60 * 1000,
+  path: "/",
+});
+
 };
 
 // Signup
