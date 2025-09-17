@@ -8,10 +8,11 @@ const generateToken = (res, userId) => {
   });
 
   res.cookie("token", token, {
-    httpOnly: true,
-    secure: false, // true in production (HTTPS)
-    sameSite: "strict",
-    maxAge: 24 * 60 * 60 * 1000,
+  httpOnly: true,
+  secure: true,        // must be true for SameSite=Non
+  sameSite: "None",    // allows cross-site cookie usage
+  maxAge: 24 * 60 * 60 * 1000,
+  path: "/",
   });
 };
 
